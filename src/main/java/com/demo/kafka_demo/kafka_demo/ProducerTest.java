@@ -11,15 +11,15 @@ public class ProducerTest {
 
 	public static void main(String[] args) {
         Properties property = new Properties();
-        property.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "ip:port,ip:port");
+        property.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.157.128:9092,192.168.157.129:9092,192.168.157.130:9092");
         property.put(ProducerConfig.ACKS_CONFIG, "all");
         property.put(ProducerConfig.RETRIES_CONFIG, 1);
         property.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,"org.apache.kafka.common.serialization.StringSerializer");
         property.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
     	Producer<String,String> producer = new KafkaProducer<String,String>(property);
-    	
-    	producer.send(new ProducerRecord<String,String>("test-topic","",""));
-    	
+    	for(int i=1;i<=10;i++){
+        	producer.send(new ProducerRecord<String,String>("test-topic",""+i,""+i));	
+    	}
     	producer.close();
 
 	}
