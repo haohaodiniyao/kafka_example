@@ -17,8 +17,16 @@ public class ProducerTest {
         property.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,"org.apache.kafka.common.serialization.StringSerializer");
         property.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
     	Producer<String,String> producer = new KafkaProducer<String,String>(property);
-    	for(int i=1;i<=10;i++){
-        	producer.send(new ProducerRecord<String,String>("test-topic",""+i,""+i));	
+//    	String[] arr = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+//    	for(String str:arr){
+    	for(int i=1;i<=1000;i++){
+        	producer.send(new ProducerRecord<String,String>("test-topic",i+"",i+""));	
+    	}
+    	for(int i=1;i<=1000;i++){
+        	producer.send(new ProducerRecord<String,String>("test-topic",i+"",i+""));	
+    	}
+    	for(int i=1;i<=1000;i++){
+        	producer.send(new ProducerRecord<String,String>("test-topic",i+"",i+""));	
     	}
     	producer.close();
 

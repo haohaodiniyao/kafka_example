@@ -13,7 +13,7 @@ public class ConsumerTest {
 
 	public static void main(String[] args) {
 		Properties property = new Properties();
-		property.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "ip:port,ip:port");
+		property.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.157.128:9092,192.168.157.129:9092,192.168.157.130:9092");
 		property.put(ConsumerConfig.GROUP_ID_CONFIG, "test-group");
 		property.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
 		property.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
